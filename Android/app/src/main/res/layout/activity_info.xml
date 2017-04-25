@@ -1,0 +1,202 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:Rudder="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ScanActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#98c4e9"
+        android:gravity="center"
+        android:text="BalanceCar"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="9" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|left" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="温度:" />
+
+                <SeekBar
+                    android:id="@+id/pb1"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:thumb="@null"
+                    android:progress="0" />
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
+                    android:textColor="#98c4e9" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|left" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="湿度:" />
+
+                <SeekBar
+                    android:id="@+id/pb2"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:thumb="@null"
+                    android:progress="0" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
+                    android:textColor="#98c4e9" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电量:" />
+
+
+                <SeekBar
+                    android:id="@+id/pb3"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:thumb="@null"
+                    android:progress="0" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
+                    android:textColor="#98c4e9" />
+
+            </TableRow>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.05"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:id="@+id/textView"
+                        android:textColor="#000000"
+                        android:textSize="10dp"
+                        android:layout_gravity="center" />
+
+                    <SeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/seekBar"
+                        android:layout_gravity="center"
+                        android:progress="50" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:text="方向盘"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.juma.stsensor.Rudder
+                    android:id="@+id/rudder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    Rudder:RudderRadius="150"
+                    Rudder:WheelRadius="220"
+                    />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/bt_start"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bt_click"
+                android:text="Scan Device"
+                android:textColor="#ffffff" />
+            <Space
+                android:layout_height="1dp"
+                />
+            <Button
+                android:id="@+id/bt_stop"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bt_click"
+                android:text="Emergency Stop"
+                android:textColor="#ffffff" />
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
