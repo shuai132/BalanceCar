@@ -17,9 +17,11 @@ import android.graphics.Color;
 import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -40,8 +42,6 @@ public class STSensor extends Activity {
 	DecimalFormat df;
 
 	private Button bt_stop;
-	private SeekBar sb;
-
 	private Rudder rudder;
 	/**
 	 * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -59,13 +59,32 @@ public class STSensor extends Activity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.d(TAG, "onOptionsItemSelected: item = "+item);
+		switch (item.getItemId()){
+			case R.id.help:
+				startActivity(new Intent(this, HelpActivity.class));
+				break;
+			case R.id.about:
+				startActivity(new Intent(this, AboutActivity.class));
+				break;
+		}
+		return true;
+	}
+
+	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		if (myDevice != null && myDevice.isConnected())
 			myDevice.disconnect();
 	}
-
 
 	//后台发送
 	private android.os.Handler handler = new android.os.Handler() {
@@ -261,7 +280,6 @@ public class STSensor extends Activity {
 		df = new DecimalFormat("######0.0");
 
 		bt_stop = (Button) findViewById(R.id.bt_stop);
-		sb = (SeekBar) findViewById(R.id.seekBar);
 
 		rudder = (Rudder)findViewById(R.id.rudder);
 		tv = (TextView)findViewById(R.id.textView3);
@@ -302,33 +320,6 @@ public class STSensor extends Activity {
 				}
 			}
 		});
-
-		sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-			String str;
-
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				if (myDevice != null && myDevice.isConnected()) {
-					str = Integer.toString(progress);
-					while (str.length() < 3) {
-						str = '0' + str;
-					}
-					myDevice.send((byte) 1, str.getBytes());
-				} else {
-					sb.setProgress(50);
-				}
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-
-			}
-
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-
-			}
-		});
 	}
 
 	private void scanDevice() {
@@ -353,12 +344,5 @@ public class STSensor extends Activity {
 
 			}
 		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 }

@@ -124,37 +124,6 @@
 
             </TableRow>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.05"
-                android:weightSum="1">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Balance"
-                        android:id="@+id/textView"
-                        android:textColor="#000000"
-                        android:textSize="10dp"
-                        android:layout_gravity="center" />
-
-                    <SeekBar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/seekBar"
-                        android:layout_gravity="center"
-                        android:progress="50" />
-                </LinearLayout>
-
-            </LinearLayout>
-
             <TextView
                 android:id="@+id/textView3"
                 android:text="方向盘"
@@ -175,7 +144,6 @@
                     Rudder:WheelRadius="220"
                     />
             </LinearLayout>
-
 
             <Button
                 android:id="@+id/bt_start"
