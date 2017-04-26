@@ -96,7 +96,7 @@ static void ToggleLEDsThread(void const *argument)
     {
         //等待传感器稳定
         if(!stopcount){
-            if(count == 10){
+            if(count == 15){
                 CarRunning = 1;
                 stopcount = 1;
             }else {
