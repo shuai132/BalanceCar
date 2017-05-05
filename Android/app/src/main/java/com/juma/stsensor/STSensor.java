@@ -16,17 +16,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.support.v4.content.LocalBroadcastManager;
-import android.widget.ToggleButton;
+import android.widget.Toast;
 
 import static android.content.ContentValues.TAG;
 
@@ -84,6 +84,25 @@ public class STSensor extends Activity {
 		super.onDestroy();
 		if (myDevice != null && myDevice.isConnected())
 			myDevice.disconnect();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			exit();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	private long mExitTime;
+	public void exit() {
+		if ((System.currentTimeMillis() - mExitTime) > 2000) {
+			Toast.makeText(this, "再按一次退出~", Toast.LENGTH_SHORT).show();
+			mExitTime = System.currentTimeMillis();
+		} else {
+			finish();
+		}
 	}
 
 	//后台发送
