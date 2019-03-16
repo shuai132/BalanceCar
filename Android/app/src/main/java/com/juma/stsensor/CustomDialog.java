@@ -36,23 +36,21 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 
 	private android.view.View.OnClickListener negativeButtonClickListener = null;
 
-
 	public CustomDialog(Context context) {
 		super(context);
 		this.context = context;
 	}
-	 public CustomDialog(Context context, int theme){
-	        super(context, theme);
-	        this.context = context;
-	    }
+	public CustomDialog(Context context, int theme){
+		super(context, theme);
+		this.context = context;
+	}
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
-		Window win = getWindow();  
+		Window win = getWindow();
 		win.requestFeature(Window.FEATURE_NO_TITLE);
 		this.setContentView(R.layout.dialog_scan);
 
@@ -62,13 +60,11 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		super.show();
 	}
 
 	@Override
 	public void dismiss() {
-		// TODO Auto-generated method stub
 		scanCallback.onDismiss();
 		super.dismiss();
 	}
@@ -126,9 +122,9 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btnCancelScan:
-			dismiss();
-			break;
+			case R.id.btnCancelScan:
+				dismiss();
+				break;
 		}
 	}
 
@@ -182,10 +178,10 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 				}
 			}
 			if(addDevice){
-			deviceInfo.add(map);
+				deviceInfo.add(map);
 			}
 			addDevice = true;
-			
+
 			lvDeviceAdapter.notifyDataSetChanged();
 		}
 	}

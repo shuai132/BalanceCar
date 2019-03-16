@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:title="操作帮助"
-        android:id="@+id/help" />
-    <item android:title="关于软件"
-        android:id="@+id/about" />
-</menu>

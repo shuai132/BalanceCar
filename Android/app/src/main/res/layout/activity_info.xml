@@ -1,10 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:Rudder="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context=".ScanActivity">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="fill_parent"
@@ -128,7 +126,7 @@
                 android:id="@+id/textView3"
                 android:text="方向盘"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -141,8 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     Rudder:RudderRadius="150"
-                    Rudder:WheelRadius="220"
-                    />
+                    Rudder:WheelRadius="220" />
             </LinearLayout>
 
             <Button

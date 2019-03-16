@@ -1,8 +1,20 @@
 package com.juma.stsensor;
 
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.UUID;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.juma.sdk.JumaDevice;
 import com.juma.sdk.JumaDeviceCallback;
@@ -10,23 +22,9 @@ import com.juma.sdk.ScanHelper;
 import com.juma.sdk.ScanHelper.ScanCallback;
 import com.juma.stsensor.CustomDialog.Callback;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Message;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.support.v4.content.LocalBroadcastManager;
-import android.widget.Toast;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.UUID;
 
 import static android.content.ContentValues.TAG;
 
@@ -59,28 +57,7 @@ public class STSensor extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d(TAG, "onOptionsItemSelected: item = "+item);
-		switch (item.getItemId()){
-			case R.id.help:
-				startActivity(new Intent(this, HelpActivity.class));
-				break;
-			case R.id.about:
-				startActivity(new Intent(this, AboutActivity.class));
-				break;
-		}
-		return true;
-	}
-
-	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		if (myDevice != null && myDevice.isConnected())
 			myDevice.disconnect();
@@ -155,14 +132,12 @@ public class STSensor extends Activity {
 	private JumaDeviceCallback callback = new JumaDeviceCallback() {
 		@Override
 		public void onConnectionStateChange(int status, int newState) {
-			// TODO Auto-generated method stub
 			super.onConnectionStateChange(status, newState);
 			if (newState == JumaDevice.STATE_CONNECTED && status == JumaDevice.SUCCESS) {
 				runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
-						// TODO Auto-generated method stub
 						btStart.setText("Receiving");
 						btStart.setBackgroundResource(R.drawable.bt_click);
 						btStart.setEnabled(true);
@@ -174,7 +149,6 @@ public class STSensor extends Activity {
 
 					@Override
 					public void run() {
-						// TODO Auto-generated method stub
 						btStart.setText("Select Device");
 						btStart.setBackgroundResource(R.drawable.bt_click);
 						btStart.setEnabled(true);
@@ -192,7 +166,7 @@ public class STSensor extends Activity {
 
 		@Override
 		public void onReceive(byte type, byte[] message) {
-			// TODO Auto-generated method stub
+
 			super.onReceive(type, message);
 			if (canReceive) {
 				canReceive = false;
@@ -217,7 +191,6 @@ public class STSensor extends Activity {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						// TODO Auto-generated method stub
 						switch (Type) {
 							case 0x00:	//温度
 								tv1.setText((double) temputere / 100 + "℃");
@@ -249,7 +222,7 @@ public class STSensor extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
+
 				if (btStart.getText().equals("Receiving")) {
 					myDevice.disconnect();
 				} else {
@@ -346,7 +319,6 @@ public class STSensor extends Activity {
 
 			@Override
 			public void onDiscover(JumaDevice device, int rssi) {
-				// TODO Auto-generated method stub
 				if (!deviceList.containsKey(device.getUuid())) {
 					deviceList.put(device.getUuid(), device);
 				}
@@ -359,8 +331,6 @@ public class STSensor extends Activity {
 
 			@Override
 			public void onScanStateChange(int arg0) {
-				// TODO Auto-generated method stub
-
 			}
 		});
 	}

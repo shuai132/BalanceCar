@@ -7,14 +7,10 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.SurfaceHolder.Callback;
-
-import java.util.jar.Attributes;
 
 public class Rudder extends SurfaceView implements Runnable,SurfaceHolder.Callback {
 
@@ -77,8 +73,7 @@ public class Rudder extends SurfaceView implements Runnable,SurfaceHolder.Callba
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-    {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension((mRudderRadius+mWheelRadius)*2, (mRudderRadius+mWheelRadius)*2);
     }
@@ -112,7 +107,6 @@ public class Rudder extends SurfaceView implements Runnable,SurfaceHolder.Callba
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
     }
 
     @Override

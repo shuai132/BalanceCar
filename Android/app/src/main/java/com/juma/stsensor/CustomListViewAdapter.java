@@ -23,7 +23,6 @@ public class CustomListViewAdapter extends BaseAdapter {
 	public CustomListViewAdapter(Context context,  List<HashMap<String, Object>> deviceInfo) {
 		inflater = LayoutInflater.from(context);
 		this.deviceInfo = deviceInfo;
-
 	}
 
 	@Override

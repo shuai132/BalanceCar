@@ -2,10 +2,6 @@
 <resources>
 
     <string name="app_name">BalanceCar</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="led_off_string">STOP</string>
-    <string name="led_on_string">START</string>
     <drawable name="clr_normal">#98c4e9</drawable>
     <drawable name="clr_pressed">#20000000</drawable>
 </resources>
