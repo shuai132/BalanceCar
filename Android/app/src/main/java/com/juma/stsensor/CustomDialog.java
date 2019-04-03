@@ -97,13 +97,7 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 	@Override
 	protected void onStart() {
 		super.onStart();
-		LocalBroadcastManager.getInstance(context).registerReceiver(receiver, getIntentFilter());
-	}
-
-	private IntentFilter getIntentFilter(){
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(STSensor.ACTION_DEVICE_DISCOVERED);
-		return filter;
+		LocalBroadcastManager.getInstance(context).registerReceiver(receiver, new IntentFilter(STSensor.ACTION_DEVICE_DISCOVERED));
 	}
 
 	@Override
@@ -150,7 +144,6 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 	}
 
 	private BroadcastReceiver receiver = new BroadcastReceiver() {
-
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			String uuid = intent.getStringExtra("uuid");

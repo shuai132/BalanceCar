@@ -1,8 +1,11 @@
 package com.juma.stsensor;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.content.LocalBroadcastManager;
@@ -29,6 +32,8 @@ import java.util.UUID;
 import static android.content.ContentValues.TAG;
 
 public class STSensor extends Activity {
+	private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
+
 	private Button btStart;
 	private TextView tv1, tv2, tv3, tv;
 	private SeekBar pb1, pb2, pb3;
@@ -54,6 +59,24 @@ public class STSensor extends Activity {
 		scanDevice();
 		clicked();
 		backgroundSend();
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			// Android M Permission check
+			if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+				requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
+			}
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+		switch (requestCode) {
+			case PERMISSION_REQUEST_COARSE_LOCATION:
+				if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+					// TODO request success
+				}
+				break;
+		}
 	}
 
 	@Override

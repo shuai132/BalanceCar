@@ -4,10 +4,12 @@ android {
     compileSdkVersion 26
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
+        useLibrary 'org.apache.http.legacy'
     }
     buildTypes {
         release {
@@ -19,5 +21,4 @@ android {
 
 dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
-    implementation files('libs/juma-sdk.jar')
 }
