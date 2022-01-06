@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+
+
+
+
 public class CustomListViewAdapter extends BaseAdapter {
 	
 	public static final String NAME_STR = "name";
@@ -59,5 +63,9 @@ public class CustomListViewAdapter extends BaseAdapter {
 		tvRssi.setText((Integer) deviceInfo.get(position).get(RSSI_STR)+"");
 		
 		return vg;
+		
+		
+		
+		
 	}
 }
