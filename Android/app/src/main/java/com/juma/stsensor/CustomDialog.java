@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+
+
+
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -199,5 +203,7 @@ public class CustomDialog extends Dialog implements android.view.View.OnClickLis
 			b[j] = new Integer(byteint).byteValue();
 		}
 		return b;
+		
+		
 	}
 }
